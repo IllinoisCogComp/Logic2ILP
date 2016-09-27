@@ -38,13 +38,15 @@ public class CCMLogicSolver {
     public CCMLogicSolver(
         List<Pair<BooleanVariable, Double>> objective,
         List<LogicFormula> hardConstraints,
-        List<Pair<LogicFormula, Double>> softConstraints, boolean maximizeObjective) {
+        List<Pair<LogicFormula, Double>> softConstraints,
+        boolean maximizeObjective,
+        ILPProblem problem) {
         this.objective = objective;
         this.hardConstraints = hardConstraints;
         this.softConstraints = softConstraints;
         this.variableCounter = new Counter("NV$");
         this.constraintCounter = new Counter("C$");
-        this.problem = null;
+        prepare(problem);
         this.maximizeObjective = maximizeObjective;
     }
 
@@ -52,7 +54,7 @@ public class CCMLogicSolver {
         return problem;
     }
 
-    public void prepare(ILPProblem problem) {
+    private void prepare(ILPProblem problem) {
         problem.setMaximize(maximizeObjective);
         this.problem = problem;
 
