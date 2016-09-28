@@ -46,8 +46,8 @@ public class CCMLogicSolver {
         this.softConstraints = softConstraints;
         this.variableCounter = new Counter("NV$");
         this.constraintCounter = new Counter("C$");
-        prepare(problem);
         this.maximizeObjective = maximizeObjective;
+        prepare(problem);
     }
 
     public ILPProblem getProblem() {
